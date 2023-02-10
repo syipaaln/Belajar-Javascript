@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar Javascript HTML DOM - DOM Events</title>
+</head>
+<body>
+    <button onclick="merah()">Merah</button>
+    <button onclick="kuning()">Kuning</button>
+    <button onclick="hijau()">Hijau</button>
+
+    <div>
+        <h1>Instruksi</h1>
+        <h1 id="konten"></h1>
+    </div>
+
+    <script type="text/javascript">
+        function merah() {
+            document.getElementById('konten').innerHTML = 'Berhenti';
+        }
+        function kuning() {
+            document.getElementById('konten').innerHTML = 'Hati-hati';
+        }
+        function hijau() {
+            document.getElementById('konten').innerHTML = 'Jalan';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Belajar Javascript HTML DOM - DOM Events</title>
+</head>
+<body>
+    <form onsubmit="event.preventDefault(); dataMobil(this)">
+        <h1>Mobil</h1>
+        <div>
+            <input name="merk" placeholder="Merk">
+        </div>
+        <div>
+            <input name="tipe" placeholder="Tipe">
+        </div>
+        <div>
+            <input name="warna" placeholder="Warna">
+        </div>
+        <div>
+            <input name="kapasitasSilinder" placeholder="Kapasitas Silinder">
+        </div>
+        <button>Simpan</button>
+    </form>
+
+    <div>
+        <h1>Mobil</h1>
+        <table>
+            <tr>
+                <td>Merk</td>
+                <td>:</td>
+                <td id="konten1"></td>
+            </tr>
+            <tr>
+                <td>Tipe</td>
+                <td>:</td>
+                <td id="konten2"></td>
+            </tr>
+            <tr>
+                <td>Warna</td>
+                <td>:</td>
+                <td id="konten3"></td>
+            </tr>
+            <tr>
+                <td>Kapasitas Silinder</td>
+                <td>:</td>
+                <td id="konten4"></td>
+            </tr>
+        </table>
+    </div>
+    <!-- <div id="konten1"></div>
+    <div id="konten2"></div>
+    <div id="konten3"></div>
+    <div id="konten4"></div> -->
+
+    <script type="text/javascript">
+        function dataMobil(element) {
+
+            const merk = element.merk.value;
+            const tipe = element.tipe.value;
+            const warna = element.warna.value;
+            const kapasitasSilinder = element.kapasitasSilinder.value;
+            
+            // document.getElementById('konten').innerHTML = 'Mobil';
+            // document.getElementById('konten1').innerHTML = `Merk: ${merk}`;
+            // document.getElementById('konten2').innerHTML = `Tipe: ${tipe}`;
+            // document.getElementById('konten3').innerHTML = `Warna: ${warna}`;
+            // document.getElementById('konten4').innerHTML = `Kapasitas Silinder: ${kapasitasSilinder}`;
+
+            document.getElementById('konten1').innerHTML = merk;
+            document.getElementById('konten2').innerHTML = tipe;
+            document.getElementById('konten3').innerHTML = warna;
+            document.getElementById('konten4').innerHTML = kapasitasSilinder;
+
+            return false;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<html>
+    <script>
+    var selesai = 0;
+    while(selesai === 0) {
+        var siswa = {
+            nama: '',
+            kelas: ''
+        }
+
+        var mataPelajaran = ['Java', 'PHP', 'Javascript', 'Golang', 'Phyton', '']
+
+        siswa.nama = prompt('input nama siswa :');
+        siswa.kelas = prompt('input kelas :');
+        const indexMapel = prompt('pilih mata pelajaran yang ingin di pelajari (0: Java, 1:  PHP, 2: Javascript, 3: Golang, 4: Phyton) : ');
+        
+        mataPelajaran = mataPelajaran[indexMapel];
+
+    console.log(siswa.nama, 'kelas', siswa.kelas, 'ingin belajar', mataPelajaran)
+        
+        
+        selesai = Number(prompt('Apakah sudah selesai ? (1: ya, 0: tidak)'));
+    }
+    console.log('Selesai');
+    </script>
+</html>
