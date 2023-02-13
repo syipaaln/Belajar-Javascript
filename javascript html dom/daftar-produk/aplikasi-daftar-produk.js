@@ -48,6 +48,7 @@ const aplikasiDaftarProduk = {
 
         this.resetFormProduk(form);
     },
+    
     resetFormProduk: function (form) {
         this.produk.index = -1;
         this.produk.nama = null;
