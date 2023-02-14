@@ -4,82 +4,98 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplikasi Daftar Produk</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Transaksi Penjualan</title>
 </head>
 <body>
-    <h2>Transaksi Penjualan</h2>
-    <form id="form-transaksi" action="" onsubmit="event.preventDefault(); tambahTransaksi(this)">
-        <input type="hidden" name="index" value="-1">
-        <div>
-            <div>
-                <label for="nama">Nama Produk</label>
-            </div>
-            <div>
-                <input type="text" id="nama" name="nama">
-            </div>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">Daftar Produk</a></li>
+                <li><a href="kategori.html">Kategori Produk</a></li>
+                <li class="active"><a href="transaksi.html">Transaksi penjualan</a></li>
+                <li><a href="konsumen.html">Konsumen</a></li>
+            </ul>
         </div>
-        <div>
+    </nav>
+
+    <div class="container">
+        <h2>Transaksi Penjualan</h2>
+        <form id="form-transaksi" action="" onsubmit="event.preventDefault(); tambahTransaksi(this)">
+            <input type="hidden" name="index" value="-1">
             <div>
-                <label for="harga">Harga Produk</label>
+                <div>
+                    <label for="nama">Nama Produk</label>
+                </div>
+                <div>
+                    <input type="text" id="nama" name="nama">
+                </div>
             </div>
             <div>
-                <input type="text" id="harga" name="harga">
-            </div>
-        </div>
-        <div>
-            <div>
-                <label for="stok">Stok Produk</label>
-            </div>
-            <div>
-                <input type="text" id="stok" name="stok">
-            </div>
-        </div>
-        <div>
-            <div>
-                <label for="gambar">Link Gambar Produk</label>
+                <div>
+                    <label for="harga">Harga Produk</label>
+                </div>
+                <div>
+                    <input type="text" id="harga" name="harga">
+                </div>
             </div>
             <div>
-                <input type="text" id="gambar" name="gambar">
-            </div>
-        </div>
-        <div>
-            <div>
-                <label for="jumlah">Jumlah</label>
-            </div>
-            <div>
-                <input type="text" id="jumlah" name="jumlah">
-            </div>
-        </div>
-        <div>
-            <div>
-                <label for="total">Total Harga</label>
+                <div>
+                    <label for="stok">Stok Produk</label>
+                </div>
+                <div>
+                    <input type="text" id="stok" name="stok">
+                </div>
             </div>
             <div>
-                <input type="text" id="total" name="total">
-            </div>
-        </div>
-        <div>
-            <div>
-                <label for="tunai">Tunai</label>
-            </div>
-            <div>
-                <input type="text" id="tunai" name="tunai">
-            </div>
-        </div>
-        <div>
-            <div>
-                <label for="kembalian">Kembalian</label>
+                <div>
+                    <label for="gambar">Link Gambar Produk</label>
+                </div>
+                <div>
+                    <input type="text" id="gambar" name="gambar">
+                </div>
             </div>
             <div>
-                <input type="text" id="kembalian" name="kembalian">
+                <div>
+                    <label for="jumlah">Jumlah</label>
+                </div>
+                <div>
+                    <input type="text" id="jumlah" name="jumlah">
+                </div>
             </div>
-        </div>
-        <div style="padding-top: 10px;">
-            <button id="btn-save-transaksi">Simpan</button>
-        </div>
-    </form>
-    <h2 id="history"></h2>
-    <div id="daftar-transaksi" style="padding-top: 10px;"></div>
+            <div>
+                <div>
+                    <label for="total">Total Harga</label>
+                </div>
+                <div>
+                    <input type="text" id="total" name="total">
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label for="tunai">Tunai</label>
+                </div>
+                <div>
+                    <input type="text" id="tunai" name="tunai">
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label for="kembalian">Kembalian</label>
+                </div>
+                <div>
+                    <input type="text" id="kembalian" name="kembalian">
+                </div>
+            </div>
+            <div style="padding-top: 10px;">
+                <button id="btn-save-transaksi">Simpan</button>
+            </div>
+        </form>
+        <h2 id="history"></h2>
+        <div id="daftar-transaksi" style="padding-top: 10px;"></div>
+    </div>
 
     <script src="transaksi.js"></script>
 </body>

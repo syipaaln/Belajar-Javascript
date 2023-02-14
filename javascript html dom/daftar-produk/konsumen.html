@@ -7,61 +7,57 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title>Aplikasi Daftar Produk</title>
+    <title>Konsumen</title>
 </head>
 <body>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="index.html">Daftar Produk</a></li>
+                <li><a href="index.html">Daftar Produk</a></li>
                 <li><a href="kategori.html">Kategori Produk</a></li>
                 <li><a href="transaksi.html">Transaksi penjualan</a></li>
-                <li><a href="konsumen.html">Konsumen</a></li>
+                <li class="active"><a href="konsumen.html">Konsumen</a></li>
             </ul>
         </div>
     </nav>
+
     <div class="container">
-        <h1>Daftar Produk</h1>
-        <form id="form-produk" action="" onsubmit="event.preventDefault(); tambahProduk(this)">
+        <h2>Konsumen</h2>
+        <form action="" id="form-konsumen" onsubmit="event.preventDefault(); tambahKonsumen(this)">
             <input type="hidden" name="index" value="-1">
             <div>
                 <div>
-                    <label for="nama">Nama Produk</label>
+                    <label for="namaKonsumen">Nama</label>
                 </div>
                 <div>
-                    <input type="text" id="nama" name="nama">
-                </div>
-            </div>
-            <div>
-                <div>
-                    <label for="harga">harga Produk</label>
+                    <input type="text" id="namaKonsumen" name="namaKonsumen">
                 </div>
                 <div>
-                    <input type="text" id="harga" name="harga">
-                </div>
-            </div>
-            <div>
-                <div>
-                    <label for="stok">Stok Produk</label>
+                    <label for="alamatKonsumen">Alamat</label>
                 </div>
                 <div>
-                    <input type="text" id="stok" name="stok">
-                </div>
-            </div>
-            <div>
-                <div>
-                    <label for="gambar">Link Gambar Produk</label>
+                    <input type="text" id="alamatKonsumen" name="alamatKonsumen">
                 </div>
                 <div>
-                    <input type="text" id="gambar" name="gambar">
+                    <label for="noHP">No HP</label>
                 </div>
-            </div>
-            <div style="padding-top: 10px;">
-                <button id="btn-save-produk">Tambah</button>
+                <div>
+                    <input type="text" id="noHP" name="noHP">
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                </div>
+                <div>
+                    <input type="text" id="email" name="email">
+                </div>
+                <div style="padding-top: 10px;">
+                    <button id="btn-save-konsumen">Simpan</button>
+                </div>
             </div>
         </form>
-        <div id="daftar-produk" style="padding-top: 10px;"></div>
+        <div id="daftar-konsumen" style="padding-top: 10px;"></div>
     </div>
-    <script src="aplikasi-daftar-produk.js"></script>
+
+    <script src="konsumen.js"></script>
 </body>
 </html>

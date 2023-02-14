@@ -4,23 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplikasi Daftar Produk</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Kategori Produk</title>
 </head>
 <body>
-    <h2>Kategori Produk</h2>
-    <form action="" id="form-kategori" onsubmit="event.preventDefault(); tambahKategori(this);">
-        <input type="hidden" name="index" value="-1">
-        <div>
-            <label for="namaKategori">Nama Kategori</label>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">Daftar Produk</a></li>
+                <li class="active"><a href="kategori.html">Kategori Produk</a></li>
+                <li><a href="transaksi.html">Transaksi penjualan</a></li>
+                <li><a href="konsumen.html">Konsumen</a></li>
+            </ul>
         </div>
-        <div>
-            <input type="text" id="namaKategori" name="namaKategori">
-        </div>
-        <div style="padding-top: 10px;">
-            <button id="btn-save-kategori">Simpan</button>
-        </div>
-    </form>
-    <div id="daftar-kategori" style="padding-top: 10px;"></div>
+    </nav>
+    <div class="container">
+        <h2>Kategori Produk</h2>
+        <form action="" id="form-kategori" onsubmit="event.preventDefault(); tambahKategori(this);">
+            <input type="hidden" name="index" value="-1">
+            <div>
+                <label for="namaKategori">Nama Kategori</label>
+            </div>
+            <div>
+                <input type="text" id="namaKategori" name="namaKategori">
+            </div>
+            <div style="padding-top: 10px;">
+                <button id="btn-save-kategori">Simpan</button>
+            </div>
+        </form>
+        <div id="daftar-kategori" style="padding-top: 10px;"></div>
+    </div>
 
     <script>
         function tambahKategori(form) {

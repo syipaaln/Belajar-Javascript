@@ -95,7 +95,7 @@ const transaksiPenjualan = {
         const componentDaftarTransaksi = document.getElementById('daftar-transaksi');
         componentDaftarTransaksi.innerHTML = '';
         this.daftarTransaksi.forEach((transaksi, index) => {
-            componentDaftarTransaksi.innerHTML += `${transaksi.nama} <br> ${transaksi.harga} <br> Stok: ${transaksi.stok} <br> Jumlah: ${transaksi.jumlah} <br> Total Harga: ${transaksi.total} <br> Tunai: ${transaksi.tunai} <br> Kembalian: ${transaksi.kembalian} <br> <img src="${transaksi.gambar}" width="150px" height="150px"> <br> ---------------------------- <br>`;
+            componentDaftarTransaksi.innerHTML += `${transaksi.nama} <br> ${transaksi.harga} <br> Stok: ${transaksi.stok} <br> Jumlah: ${transaksi.jumlah} <br> Total Harga: ${transaksi.total} <br> Tunai: ${transaksi.tunai} <br> Kembalian: ${transaksi.kembalian} <br> <img src="${transaksi.gambar}" width="150px" height="150px"> <br> -------------------------------- <br>`;
         });
     }
 }
