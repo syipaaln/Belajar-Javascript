@@ -1,40 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="pastel">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.50.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Kategori Produk</title>
 </head>
 <body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <ul class="nav navbar-nav">
+    <div class="navbar bg-primary text-primary-content">
+        <div class="flex-none">
+            <ul class="menu menu-horizontal px-1">
                 <li><a href="index.html">Daftar Produk</a></li>
                 <li class="active"><a href="kategori.html">Kategori Produk</a></li>
                 <li><a href="transaksi.html">Transaksi penjualan</a></li>
                 <li><a href="konsumen.html">Konsumen</a></li>
             </ul>
         </div>
-    </nav>
-    <div class="container">
-        <h2>Kategori Produk</h2>
-        <form action="" id="form-kategori" onsubmit="event.preventDefault(); tambahKategori(this);">
-            <input type="hidden" name="index" value="-1">
-            <div>
-                <label for="namaKategori">Nama Kategori</label>
+    </div>
+    <div class="container mx-auto">
+        <div class="flex justify-center gap-5">
+            <div class="card w-96 glass">
+                <div class="card-body">
+                    <h2 class="card-title">Kategori Produk</h2>
+                    <p>
+                        <form action="" id="form-kategori" onsubmit="event.preventDefault(); tambahKategori(this);">
+                            <input type="hidden" name="index" value="-1">
+                            <div>
+                                <label for="namaKategori" class="label">Nama Kategori</label>
+                            </div>
+                            <div>
+                                <input type="text" id="namaKategori" name="namaKategori" class="input input-bordered input-primary w-full max-w-xs">
+                            </div>
+                            <div class="card-actions justify-end">
+                                <button id="btn-save-kategori" class="btn btn-primary mt-2">Simpan</button>
+                            </div>
+                        </form>
+                    </p>
+                </div>
             </div>
-            <div>
-                <input type="text" id="namaKategori" name="namaKategori">
+            
+            <div class="card w-96 glass">
+                <div class="card-body">
+                    <h2 class="card-title">Kategori Produk</h2>
+                    <p>
+                        <div id="daftar-kategori"></div>
+                    </p>
+                </div>
             </div>
-            <div style="padding-top: 10px;">
-                <button id="btn-save-kategori">Simpan</button>
-            </div>
-        </form>
-        <div id="daftar-kategori" style="padding-top: 10px;"></div>
+        </div>
     </div>
 
     <script>
@@ -81,7 +96,10 @@
                 const componentDaftarKategori = document.getElementById('daftar-kategori');
                 componentDaftarKategori.innerHTML = '';
                 this.daftarKategori.forEach((kategori, index) => {
-                    componentDaftarKategori.innerHTML += `${kategori.namaKategori} <button onclick="kategoriProduk.editKategori(${index})">Edit</button> <button onclick="kategoriProduk.hapusKategori(${index})">Hapus</button>`;
+                    componentDaftarKategori.innerHTML += 
+                        `${kategori.namaKategori} 
+                        <button onclick="kategoriProduk.editKategori(${index})" class="btn btn-primary btn-xs">Edit</button> 
+                        <button onclick="kategoriProduk.hapusKategori(${index})" class="btn btn-primary btn-xs">Hapus</button> <br>`;
                 });
             },
             hapusKategori: function (index) {

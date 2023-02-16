@@ -68,7 +68,13 @@ const halamanKonsumen = {
         const componentDaftarKonsumen = document.getElementById('daftar-konsumen');
         componentDaftarKonsumen.innerHTML = '';
         this.daftarKonsumen.forEach((konsumen, index) => {
-            componentDaftarKonsumen.innerHTML += `Nama: ${konsumen.namaKonsumen} <br> Alamat: ${konsumen.alamatKonsumen} <br> No HP: ${konsumen.noHP} <br> Email: ${konsumen.email} <br> <button onclick="halamanKonsumen.editKonsumen(${index})">Edit</button> <button onclick="halamanKonsumen.hapusKonsumen(${index})">Hapus</button> <br> ---------------------------- <br>`;
+            componentDaftarKonsumen.innerHTML += 
+            `Nama: ${konsumen.namaKonsumen} <br> 
+            Alamat: ${konsumen.alamatKonsumen} <br> 
+            No HP: ${konsumen.noHP} <br> 
+            Email: ${konsumen.email} <br> 
+            <button onclick="halamanKonsumen.editKonsumen(${index})" class="btn btn-primary btn-xs">Edit</button> 
+            <button onclick="halamanKonsumen.hapusKonsumen(${index})" class="btn btn-primary btn-xs">Hapus</button> <br>`;
         });
     },
     hapusKonsumen: function (index) {

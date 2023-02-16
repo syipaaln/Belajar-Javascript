@@ -1,100 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="pastel">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.50.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Transaksi Penjualan</title>
 </head>
 <body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <ul class="nav navbar-nav">
+    <div class="navbar bg-primary text-primary-content">
+        <div class="flex-none">
+            <ul class="menu menu-horizontal px-1">
                 <li><a href="index.html">Daftar Produk</a></li>
                 <li><a href="kategori.html">Kategori Produk</a></li>
                 <li class="active"><a href="transaksi.html">Transaksi penjualan</a></li>
                 <li><a href="konsumen.html">Konsumen</a></li>
             </ul>
         </div>
-    </nav>
+    </div>
 
-    <div class="container">
-        <h2>Transaksi Penjualan</h2>
-        <form id="form-transaksi" action="" onsubmit="event.preventDefault(); tambahTransaksi(this)">
-            <input type="hidden" name="index" value="-1">
-            <div>
-                <div>
-                    <label for="nama">Nama Produk</label>
-                </div>
-                <div>
-                    <input type="text" id="nama" name="nama">
+    <div class="container mx-auto">
+        <div class="flex justify-center gap-5">
+            <div class="card w-96 glass">
+                <div class="card-body">
+                    <h2 class="card-title">Transaksi Penjualan</h2>
+                    <p>
+                        <form id="form-transaksi" action="" onsubmit="event.preventDefault(); tambahTransaksi(this)">
+                            <input type="hidden" name="index" value="-1">
+                            <div>
+                                <div>
+                                    <label for="nama" class="label">Nama Produk</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="nama" name="nama" class="input input-bordered input-primary w-full max-w-xs">
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <label for="harga" class="label">Harga Produk</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="harga" name="harga" class="input input-bordered input-primary w-full max-w-xs">
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <label for="stok" class="label">Stok Produk</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="stok" name="stok" class="input input-bordered input-primary w-full max-w-xs">
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <label for="gambar" class="label">Link Gambar Produk</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="gambar" name="gambar" class="input input-bordered input-primary w-full max-w-xs">
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <label for="jumlah" class="label">Jumlah</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="jumlah" name="jumlah" class="input input-bordered input-primary w-full max-w-xs">
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <label for="total" class="label">Total Harga</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="total" name="total" class="input input-bordered input-primary w-full max-w-xs">
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <label for="tunai" class="label">Tunai</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="tunai" name="tunai" class="input input-bordered input-primary w-full max-w-xs">
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <label for="kembalian" class="label">Kembalian</label>
+                                </div>
+                                <div>
+                                    <input type="text" id="kembalian" name="kembalian" class="input input-bordered input-primary w-full max-w-xs">
+                                </div>
+                            </div>
+                            <div class="card-actions justify-end">
+                                <button id="btn-save-transaksi" class="btn btn-primary mt-2">Simpan</button>
+                            </div>
+                        </form>
+                    </p>
                 </div>
             </div>
-            <div>
-                <div>
-                    <label for="harga">Harga Produk</label>
-                </div>
-                <div>
-                    <input type="text" id="harga" name="harga">
-                </div>
-            </div>
-            <div>
-                <div>
-                    <label for="stok">Stok Produk</label>
-                </div>
-                <div>
-                    <input type="text" id="stok" name="stok">
+            
+            <div class="card w-96 glass">
+                <div class="card-body">
+                    <h2 class="card-title">History Penjualan</h2>
+                    <p>
+                        <div id="daftar-transaksi"></div>
+                    </p>
                 </div>
             </div>
-            <div>
-                <div>
-                    <label for="gambar">Link Gambar Produk</label>
-                </div>
-                <div>
-                    <input type="text" id="gambar" name="gambar">
-                </div>
-            </div>
-            <div>
-                <div>
-                    <label for="jumlah">Jumlah</label>
-                </div>
-                <div>
-                    <input type="text" id="jumlah" name="jumlah">
-                </div>
-            </div>
-            <div>
-                <div>
-                    <label for="total">Total Harga</label>
-                </div>
-                <div>
-                    <input type="text" id="total" name="total">
-                </div>
-            </div>
-            <div>
-                <div>
-                    <label for="tunai">Tunai</label>
-                </div>
-                <div>
-                    <input type="text" id="tunai" name="tunai">
-                </div>
-            </div>
-            <div>
-                <div>
-                    <label for="kembalian">Kembalian</label>
-                </div>
-                <div>
-                    <input type="text" id="kembalian" name="kembalian">
-                </div>
-            </div>
-            <div style="padding-top: 10px;">
-                <button id="btn-save-transaksi">Simpan</button>
-            </div>
-        </form>
-        <h2 id="history"></h2>
-        <div id="daftar-transaksi" style="padding-top: 10px;"></div>
+        </div>
     </div>
 
     <script src="transaksi.js"></script>

@@ -1,5 +1,4 @@
 function tambahTransaksi(form) {
-    document.getElementById('history').innerHTML = 'History Penjualan';
     console.log(form);
     transaksiPenjualan.inputTransaksi(form);
     transaksiPenjualan.menampilkanHistoryPenjualan();
@@ -95,7 +94,21 @@ const transaksiPenjualan = {
         const componentDaftarTransaksi = document.getElementById('daftar-transaksi');
         componentDaftarTransaksi.innerHTML = '';
         this.daftarTransaksi.forEach((transaksi, index) => {
-            componentDaftarTransaksi.innerHTML += `${transaksi.nama} <br> ${transaksi.harga} <br> Stok: ${transaksi.stok} <br> Jumlah: ${transaksi.jumlah} <br> Total Harga: ${transaksi.total} <br> Tunai: ${transaksi.tunai} <br> Kembalian: ${transaksi.kembalian} <br> <img src="${transaksi.gambar}" width="150px" height="150px"> <br> -------------------------------- <br>`;
+            componentDaftarTransaksi.innerHTML += 
+                `<div class="flex justify-between">
+                    <div>
+                        ${transaksi.nama} <br> 
+                        ${transaksi.harga} <br> 
+                        Stok: ${transaksi.stok} <br> 
+                        Jumlah: ${transaksi.jumlah} <br> 
+                        Total Harga: ${transaksi.total} <br> 
+                        Tunai: ${transaksi.tunai} <br> 
+                        Kembalian: ${transaksi.kembalian} <br> 
+                    </div>
+                    <div>
+                        <img src="${transaksi.gambar}" width="110px" height="110px"> <br>
+                    </div>
+                </div>`;
         });
     }
 }
