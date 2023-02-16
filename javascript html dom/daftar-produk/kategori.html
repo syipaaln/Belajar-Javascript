@@ -31,10 +31,10 @@
                                 <label for="namaKategori" class="label">Nama Kategori</label>
                             </div>
                             <div>
-                                <input type="text" id="namaKategori" name="namaKategori" class="input input-bordered input-primary w-full max-w-xs">
+                                <input type="text" id="namaKategori" name="namaKategori" class="input input-bordered input-primary file-input-sm w-full max-w-xs">
                             </div>
                             <div class="card-actions justify-end">
-                                <button id="btn-save-kategori" class="btn btn-primary mt-2">Simpan</button>
+                                <button id="btn-save-kategori" class="btn btn-primary mt-2 btn-sm">Simpan</button>
                             </div>
                         </form>
                     </p>
@@ -99,7 +99,7 @@
                     componentDaftarKategori.innerHTML += 
                         `${kategori.namaKategori} 
                         <button onclick="kategoriProduk.editKategori(${index})" class="btn btn-primary btn-xs">Edit</button> 
-                        <button onclick="kategoriProduk.hapusKategori(${index})" class="btn btn-primary btn-xs">Hapus</button> <br>`;
+                        <button onclick="kategoriProduk.hapusKategori(${index})" class="btn btn-error btn-xs">Hapus</button> <br>`;
                 });
             },
             hapusKategori: function (index) {

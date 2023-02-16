@@ -74,7 +74,7 @@ const halamanKonsumen = {
             No HP: ${konsumen.noHP} <br> 
             Email: ${konsumen.email} <br> 
             <button onclick="halamanKonsumen.editKonsumen(${index})" class="btn btn-primary btn-xs">Edit</button> 
-            <button onclick="halamanKonsumen.hapusKonsumen(${index})" class="btn btn-primary btn-xs">Hapus</button> <br>`;
+            <button onclick="halamanKonsumen.hapusKonsumen(${index})" class="btn btn-error btn-xs">Hapus</button> <br>`;
         });
     },
     hapusKonsumen: function (index) {

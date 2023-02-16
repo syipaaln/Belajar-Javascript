@@ -75,7 +75,7 @@ const aplikasiDaftarProduk = {
                         ${produk.harga} <br> 
                         Stok: ${produk.stok} <br>
                         <button onclick="aplikasiDaftarProduk.editProduk(${index})" class="btn btn-primary btn-xs">Edit</button> 
-                        <button onclick="aplikasiDaftarProduk.hapusProduk(${index})" class="btn btn-primary btn-xs">Hapus</button> <br>
+                        <button onclick="aplikasiDaftarProduk.hapusProduk(${index})" class="btn btn-error btn-xs">Hapus</button> <br>
                     </div>
                     <div>
                         <img src="${produk.gambar}" width="80px" height="80px"> <br> 
