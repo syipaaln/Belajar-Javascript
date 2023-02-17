@@ -5,6 +5,16 @@ function tambahTransaksi(form) {
 
 }
 
+const databaseDaftarTransaksi = {
+    save(daftarTransaksi) {
+        localStorage.setItem('daftarTransaksi', JSON.stringify(daftarTransaksi));
+    },
+    get() {
+        return JSON.parse(localStorage.getItem('daftarTransaksi'));
+    }
+}
+
+
 const transaksiPenjualan = {
     transaksi: {
         index: -1,
@@ -62,11 +72,13 @@ const transaksiPenjualan = {
             return false;
         }
         if(this.transaksi.index == -1) {
+            this.daftarTransaksi = this.daftarTransaksi || [];
             this.daftarTransaksi.push(copy(this.transaksi));
         } else {
             this.daftarTransaksi[this.transaksi.index] = copy(this.transaksi)
         }
 
+        databaseDaftarTransaksi.save(this.daftarTransaksi);
         this.resetFormTransaksi(form);
     },
     resetFormTransaksi (form) {
@@ -91,28 +103,35 @@ const transaksiPenjualan = {
         form.kembalian.value = this.transaksi.kembalian;
     },
     menampilkanHistoryPenjualan: function () {
+        this.daftarTransaksi = databaseDaftarTransaksi.get();
         const componentDaftarTransaksi = document.getElementById('daftar-transaksi');
         componentDaftarTransaksi.innerHTML = '';
-        this.daftarTransaksi.forEach((transaksi, index) => {
-            componentDaftarTransaksi.innerHTML += 
-                `<div class="flex justify-between">
-                    <div>
-                        ${transaksi.nama} <br> 
-                        ${transaksi.harga} <br> 
-                        Stok: ${transaksi.stok} <br> 
-                        Jumlah: ${transaksi.jumlah} <br> 
-                        Total Harga: ${transaksi.total} <br> 
-                        Tunai: ${transaksi.tunai} <br> 
-                        Kembalian: ${transaksi.kembalian} <br> 
-                    </div>
-                    <div>
-                        <img src="${transaksi.gambar}" width="110px" height="110px"> <br>
-                    </div>
-                </div>`;
-        });
+        if (this.daftarTransaksi === null) {
+            console.log('Tidak ada transaksi');
+        } else {
+            this.daftarTransaksi.forEach((transaksi, index) => {
+                componentDaftarTransaksi.innerHTML += 
+                    `<div class="flex justify-between">
+                        <div>
+                            ${transaksi.nama} <br> 
+                            ${transaksi.harga} <br> 
+                            Stok: ${transaksi.stok} <br> 
+                            Jumlah: ${transaksi.jumlah} <br> 
+                            Total Harga: ${transaksi.total} <br> 
+                            Tunai: ${transaksi.tunai} <br> 
+                            Kembalian: ${transaksi.kembalian} <br> 
+                        </div>
+                        <div>
+                            <img src="${transaksi.gambar}" width="110px" height="110px"> <br>
+                        </div>
+                    </div>`;
+            });
+        }
     }
 }
 
 function copy(obj) {
     return JSON.parse(JSON.stringify(obj));
 }
+
+transaksiPenjualan.menampilkanHistoryPenjualan();

@@ -4,6 +4,15 @@ function tambahKonsumen(form) {
     halamanKonsumen.menampilkanDaftarKonsumen();
 }
 
+const databaseDaftarKonsumen = {
+    save(daftarKonsumen) {
+        localStorage.setItem('daftarKonsumen', JSON.stringify(daftarKonsumen));
+    },
+    get() {
+        return JSON.parse(localStorage.getItem('daftarKonsumen'));
+    }
+}
+
 const halamanKonsumen = {
     konsumen: {
         index: -1,
@@ -41,11 +50,13 @@ const halamanKonsumen = {
         }
 
         if(this.konsumen.index == -1) {
+            this.daftarKonsumen = this.daftarKonsumen || [];
             this.daftarKonsumen.push(copy(this.konsumen));
         } else {
             this.daftarKonsumen[this.konsumen.index] = copy(this.konsumen)
         }
 
+        databaseDaftarKonsumen.save(this.daftarKonsumen);
         this.resetFormKonsumen(form);
     },
     
@@ -65,21 +76,27 @@ const halamanKonsumen = {
         document.getElementById('btn-save-konsumen').innerHTML = 'Simpan';
     },
     menampilkanDaftarKonsumen: function () {
+        this.daftarKonsumen = databaseDaftarKonsumen.get();
         const componentDaftarKonsumen = document.getElementById('daftar-konsumen');
         componentDaftarKonsumen.innerHTML = '';
-        this.daftarKonsumen.forEach((konsumen, index) => {
-            componentDaftarKonsumen.innerHTML += 
-            `Nama: ${konsumen.namaKonsumen} <br> 
-            Alamat: ${konsumen.alamatKonsumen} <br> 
-            No HP: ${konsumen.noHP} <br> 
-            Email: ${konsumen.email} <br> 
-            <button onclick="halamanKonsumen.editKonsumen(${index})" class="btn btn-primary btn-xs">Edit</button> 
-            <button onclick="halamanKonsumen.hapusKonsumen(${index})" class="btn btn-error btn-xs">Hapus</button> <br>`;
-        });
+        if (this.daftarKonsumen === null) {
+            console.log('Tidak ada konsumen');
+        } else {
+            this.daftarKonsumen.forEach((konsumen, index) => {
+                componentDaftarKonsumen.innerHTML += 
+                `Nama: ${konsumen.namaKonsumen} <br> 
+                Alamat: ${konsumen.alamatKonsumen} <br> 
+                No HP: ${konsumen.noHP} <br> 
+                Email: ${konsumen.email} <br> 
+                <button onclick="halamanKonsumen.editKonsumen(${index})" class="btn btn-primary btn-xs">Edit</button> 
+                <button onclick="halamanKonsumen.hapusKonsumen(${index})" class="btn btn-error btn-xs">Hapus</button> <br>`;
+            });
+        }
     },
     hapusKonsumen: function (index) {
         if(confirm('Apakah anda yakin ingin menghapus ini?')) {
             this.daftarKonsumen.splice(index, 1);
+            databaseDaftarKonsumen.save(this.daftarKonsumen);
             this.menampilkanDaftarKonsumen();
         }
     },
@@ -99,3 +116,5 @@ const halamanKonsumen = {
 function copy(obj) {
     return JSON.parse(JSON.stringify(obj));
 }
+
+halamanKonsumen.menampilkanDaftarKonsumen();

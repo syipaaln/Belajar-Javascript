@@ -4,6 +4,16 @@ function tambahProduk(form) {
     aplikasiDaftarProduk.menampilkanDaftarProduk();
 }
 
+const databaseDaftarProduk = {
+    save(daftarProduk) {
+        localStorage.setItem('daftarProduk', JSON.stringify(daftarProduk));
+    },
+
+    get() {
+        return JSON.parse(localStorage.getItem('daftarProduk'));
+    }
+}
+
 const aplikasiDaftarProduk = {
     produk: {
         index: -1,
@@ -21,54 +31,58 @@ const aplikasiDaftarProduk = {
         this.produk.gambar = form.gambar.value;
 
         if(!this.produk.nama) {
-            alert('Nama produk tidak boleh kosong!');
+            alert('Nama tidak boleh kosong!');
             return false;
         }
 
         if(!this.produk.harga) {
-            alert('Harga produk tidak boleh kosong!');
+            alert('Harga tidak boleh kosong!');
             return false;
         }
 
         if(!this.produk.stok) {
-            alert('Stok produk tidak boleh kosong!');
+            alert('Stok tidak boleh kosong!');
             return false;
         }
 
         if(!this.produk.gambar) {
-            alert('Link gambar produk tidak boleh kosong!');
+            alert('Gambar tidak boleh kosong!');
             return false;
         }
 
         if(this.produk.index == -1) {
+            this.daftarProduk = this.daftarProduk || [];
             this.daftarProduk.push(copy(this.produk));
         } else {
             this.daftarProduk[this.produk.index] = copy(this.produk)
         }
-
+        databaseDaftarProduk.save(this.daftarProduk);
         this.resetFormProduk(form);
     },
-    
     resetFormProduk: function (form) {
-        this.produk.index = -1;
         this.produk.nama = null;
         this.produk.harga = null;
         this.produk.stok = null;
         this.produk.gambar = null;
+        this.produk.index = -1;
 
-        form.index.value = this.produk.index;
         form.nama.value = this.produk.nama;
         form.harga.value = this.produk.harga;
         form.stok.value = this.produk.stok;
         form.gambar.value = this.produk.gambar;
+        form.index.value = this.produk.index;
 
         document.getElementById('btn-save-produk').innerHTML = 'Tambah';
     },
     menampilkanDaftarProduk: function () {
+        this.daftarProduk = databaseDaftarProduk.get();
         const componentDaftarProduk = document.getElementById('daftar-produk');
         componentDaftarProduk.innerHTML = '';
-        this.daftarProduk.forEach((produk, index) => {
-            componentDaftarProduk.innerHTML += `
+        if (this.daftarProduk === null) {
+            console.log('Tidak ada produk');
+        } else {
+            this.daftarProduk.forEach((produk, index) => {
+                componentDaftarProduk.innerHTML += `
                 <div class="flex justify-between">
                     <div>
                         ${produk.nama} <br> 
@@ -81,27 +95,31 @@ const aplikasiDaftarProduk = {
                         <img src="${produk.gambar}" width="80px" height="80px"> <br> 
                     </div>   
                 </div>`;
-        });
+            });
+        }
     },
     hapusProduk: function (index) {
-        if(confirm('Apakah anda yakin ingin menghapus produk ini?')) {
+        if(confirm('Apakah anda yakin ingin menghapus data ini ?')) {
             this.daftarProduk.splice(index, 1);
+            databaseDaftarProduk.save(this.daftarProduk);
             this.menampilkanDaftarProduk();
         }
     },
-    editProduk: function(index) {
+    editProduk: function (index) {
         const produk = this.daftarProduk[index];
         const form = document.getElementById('form-produk');
-        form.index.value = index;
         form.nama.value = produk.nama;
         form.harga.value = produk.harga;
         form.stok.value = produk.stok;
         form.gambar.value = produk.gambar;
+        form.index.value = index;
 
         document.getElementById('btn-save-produk').innerHTML = 'Edit';
     }
 }
-
+ 
 function copy(obj) {
     return JSON.parse(JSON.stringify(obj));
 }
+
+aplikasiDaftarProduk.menampilkanDaftarProduk();
